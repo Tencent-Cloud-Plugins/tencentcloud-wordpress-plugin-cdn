@@ -54,101 +54,104 @@ $ajax_url = admin_url(TENCENT_WORDPRESS_CDN_ADMIN_AJAX);
     }
     echo '<div id="message" class="updated notice is-dismissible" style="margin-bottom: 1%;margin-left:0%;"><p>' . $notice . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">忽略此通知。</span></button></div>';
 ?>
-<div class="bs-docs-section">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="page-header ">
-                <h1 id="forms">腾讯云内容分发网络（CDN）插件</h1>
-            </div>
-            <p>自动刷新腾讯云CDN缓存的插件</p>
-        </div>
-    </div>
-    <div class="postbox">
+<div class="wrap">
+    <div class="bs-docs-section">
         <div class="row">
-            <div class="col-lg-9">
-                <form id="tcwpform_cdn_info_set" data-ajax-url="<?php echo $ajax_url ?>" name="tcwpcosform" method="post"
-                      class="bs-component">
-                    <!-- Setting Option no_local_file-->
-                    <div class="row form-group">
-                        <label class="col-form-label col-lg-2 tencent_cdn_secret_lable" for="inputDefault">自定义密钥</label>
+            <div class="col-lg-12">
+                <div class="page-header ">
+                    <h1 id="forms">腾讯云内容分发网络（CDN）插件</h1>
+                </div>
+                <p>自动刷新腾讯云CDN缓存的插件</p>
+            </div>
+        </div>
+        <div class="postbox">
+            <div class="row">
+                <div class="col-lg-9">
+                    <form id="tcwpform_cdn_info_set" data-ajax-url="<?php echo $ajax_url ?>" name="tcwpcosform" method="post"
+                          class="bs-component">
+                        <!-- Setting Option no_local_file-->
+                        <div class="row form-group">
+                            <label class="col-form-label col-lg-2 tencent_cdn_secret_lable" for="inputDefault">自定义密钥</label>
 
-                        <div class="custom-control custom-switch div_custom_switch_padding_top">
-                            <input name="customize_secret" type="checkbox" class="custom-control-input" id="tencent_wordpress_cdn_customize_secret"
+                            <div class="custom-control custom-switch div_custom_switch_padding_top">
+                                <input name="customize_secret" type="checkbox" class="custom-control-input" id="tencent_wordpress_cdn_customize_secret"
+                                    <?php
+                                    if (isset($tcwpcdn_options)
+                                        && isset($tcwpcdn_options['customize_secret'])
+                                        && $tcwpcdn_options['customize_secret'] === true) {
+                                        echo 'checked="true"';
+                                    }
+                                    ?>
+                                >
+                                <label class="custom-control-label" for="tencent_wordpress_cdn_customize_secret">为本插件就配置不同于全局腾讯云密钥的单独密钥</label>
+                            </div>
+
+                        </div>
+                        <!-- Setting Option SecretId-->
+                        <div class="form-group">
+                            <label class="col-form-label col-lg-2" for="inputDefault">SecretId</label>
+                            <input id="tencent_wordpress_cdn_secret_id" name="secret_id" type="password" class="col-lg-5 is-invalid"
+                                   placeholder="SecretId"
                                 <?php
-                                if (isset($tcwpcdn_options)
-                                    && isset($tcwpcdn_options['customize_secret'])
-                                    && $tcwpcdn_options['customize_secret'] === true) {
-                                    echo 'checked="true"';
+                                if (!isset($tcwpcdn_options) || !isset($tcwpcdn_options['customize_secret'])
+                                    || $tcwpcdn_options['customize_secret'] === false) {
+                                    echo 'disabled="true"';
                                 }
                                 ?>
-                            >
-                            <label class="custom-control-label" for="tencent_wordpress_cdn_customize_secret">为本插件就配置不同于全局腾讯云密钥的单独密钥</label>
-                        </div>
+                                   value="<?php if (isset($tcwpcdn_options) && isset($tcwpcdn_options['secret_id'])) {
+                                       echo esc_attr($tcwpcdn_options['secret_id']);
+                                   } ?>">
 
-                    </div>
-                    <!-- Setting Option SecretId-->
-                    <div class="form-group">
-                        <label class="col-form-label col-lg-2" for="inputDefault">SecretId</label>
-                        <input id="tencent_wordpress_cdn_secret_id" name="secret_id" type="password" class="col-lg-5 is-invalid"
-                               placeholder="SecretId"
-                            <?php
-                            if (!isset($tcwpcdn_options) || !isset($tcwpcdn_options['customize_secret'])
-                                || $tcwpcdn_options['customize_secret'] === false) {
-                                echo 'disabled="true"';
-                            }
-                            ?>
-                               value="<?php if (isset($tcwpcdn_options) && isset($tcwpcdn_options['secret_id'])) {
-                                   echo esc_attr($tcwpcdn_options['secret_id']);
-                               } ?>">
-
-                        <span id="cdn_secret_id_change_type" class="dashicons dashicons-hidden"></span>
-                        <span id="span_cdn_secret_id" class="invalid-feedback offset-lg-2"></span>
-                    </div>
-                    <!-- Setting Option SecretKey-->
-                    <div class="form-group">
-                        <label class="col-form-label col-lg-2" for="inputDefault">SecretKey</label>
-                        <input id="tencent_wordpress_cdn_secret_key" name="secret_key" type="password" class="col-lg-5 is-invalid"
-                               placeholder="SecretKey"
-                            <?php
-                            if (!isset($tcwpcdn_options) || !isset($tcwpcdn_options['customize_secret'])
-                                || $tcwpcdn_options['customize_secret'] === false) {
-                                echo 'disabled="true"';
-                            }
-                            ?>
-                               value="<?php if (isset($tcwpcdn_options) && isset($tcwpcdn_options['secret_key'])) {
-                                   echo esc_attr($tcwpcdn_options['secret_key']);
-                               } ?>">
-                        <span id="cdn_secret_key_change_type" class="dashicons dashicons-hidden"></span>
-                        <span id="span_cdn_secret_key" class="invalid-feedback offset-lg-2"></span>
-                        <div class="offset-lg-2">
-                            <p>访问 <a href="https://console.qcloud.com/cam/capi" target="_blank">密钥管理</a>获取
-                                SecretId和SecretKey或通过"新建密钥"创建密钥串</p>
+                            <span id="cdn_secret_id_change_type" class="dashicons dashicons-hidden"></span>
+                            <span id="span_cdn_secret_id" class="invalid-feedback offset-lg-2"></span>
                         </div>
+                        <!-- Setting Option SecretKey-->
+                        <div class="form-group">
+                            <label class="col-form-label col-lg-2" for="inputDefault">SecretKey</label>
+                            <input id="tencent_wordpress_cdn_secret_key" name="secret_key" type="password" class="col-lg-5 is-invalid"
+                                   placeholder="SecretKey"
+                                <?php
+                                if (!isset($tcwpcdn_options) || !isset($tcwpcdn_options['customize_secret'])
+                                    || $tcwpcdn_options['customize_secret'] === false) {
+                                    echo 'disabled="true"';
+                                }
+                                ?>
+                                   value="<?php if (isset($tcwpcdn_options) && isset($tcwpcdn_options['secret_key'])) {
+                                       echo esc_attr($tcwpcdn_options['secret_key']);
+                                   } ?>">
+                            <span id="cdn_secret_key_change_type" class="dashicons dashicons-hidden"></span>
+                            <span id="span_cdn_secret_key" class="invalid-feedback offset-lg-2"></span>
+                            <div class="offset-lg-2">
+                                <p>访问 <a href="https://console.qcloud.com/cam/capi" target="_blank">密钥管理</a>获取
+                                    SecretId和SecretKey或通过"新建密钥"创建密钥串</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Saving Options-->
+        <button id="form_cdn_button_save" type="button" class="btn btn-primary">保存配置</button>
+        <span id="span_button_save" class="invalid-feedback offset-lg-2"></span>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-lg-9">
+                <form id="wpcosform_cdn_info_refresh" name="tcwpcosform_cos_info_replace" method="post"
+                      class="bs-component">
+                    <div class="form-group">
+                        <label class="col-form-label col-lg-2" for="inputDefault">接口测试</label>
+                        <button id="form_cdn_button_info_refresh" type="button" class="btn btn-primary">一键测试</button>
+                        <span id="span_cdn_info_refresh" class="invalid-feedback offset-lg-2"></span>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
-
-    <!-- Saving Options-->
-    <button id="form_cdn_button_save" type="button" class="btn btn-primary">保存配置</button>
-    <span id="span_button_save" class="invalid-feedback offset-lg-2"></span>
-    <hr class="my-4">
-    <div class="row">
-        <div class="col-lg-9">
-            <form id="wpcosform_cdn_info_refresh" name="tcwpcosform_cos_info_replace" method="post"
-                  class="bs-component">
-                <div class="form-group">
-                    <label class="col-form-label col-lg-2" for="inputDefault">接口测试</label>
-                    <button id="form_cdn_button_info_refresh" type="button" class="btn btn-primary">一键测试</button>
-                    <span id="span_cdn_info_refresh" class="invalid-feedback offset-lg-2"></span>
-                </div>
-            </form>
+        <br>
+        <div class="setting_page_footer">
+            <a href="https://openapp.qq.com/" target="_blank">文档中心</a> | <a href="https://github.com/Tencent-Cloud-Plugins/" target="_blank">GitHub</a> | <a
+                    href="https://support.qq.com/product/164613" target="_blank">反馈建议</a>
         </div>
     </div>
-    <br>
-    <div class="setting_page_footer">
-        <a href="https://openapp.qq.com/" target="_blank">文档中心</a> | <a href="https://github.com/Tencent-Cloud-Plugins/" target="_blank">GitHub</a> | <a
-                href="https://support.qq.com/product/164613" target="_blank">反馈建议</a>
-    </div>
 </div>
+
