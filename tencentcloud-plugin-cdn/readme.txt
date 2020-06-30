@@ -19,7 +19,7 @@ License URI: http://www.apache.org/licenses/LICENSE-2.0.txt
 
 == Installation ==
 
-* 1、将文件夹更名为tencentcloud-plugin-cdn并上传到/wp-content/plugins/目录下<br />
+* 1、把tencentcloud-plugin-cdn文件夹上传到/wp-content/plugins/目录下<br />
 * 2、在后台插件列表中激活tencentcloud-plugin-cdn<br />
 * 3、在《tencentcloud-plugin-cdn设置》菜单中输入腾讯云相关参数信息<br />
 
