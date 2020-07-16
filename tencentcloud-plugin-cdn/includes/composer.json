@@ -1,5 +1,0 @@
-{
-    "require": {
-        "tencentcloud/tencentcloud-sdk-php": "3.0.1"
-    }
-}
