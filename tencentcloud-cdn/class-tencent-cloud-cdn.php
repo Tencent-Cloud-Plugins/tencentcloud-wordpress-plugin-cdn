@@ -107,7 +107,7 @@ class TencentWordpressCDN
         if ($tcwpcdn_options['customize_secret'] === true && isset($tcwpcdn_options['secret_id']) && isset($tcwpcdn_options['secret_key'])) {
             $secret_id = $tcwpcdn_options['secret_id'];
             $secret_key = $tcwpcdn_options['secret_key'];
-        } elseif ($common_option['site_report_on'] === true && isset($common_option['secret_id']) && isset($common_option['secret_key'])) {
+        } elseif (isset($common_option['secret_id']) && isset($common_option['secret_key'])) {
             $secret_id = $common_option['secret_id'];
             $secret_key = $common_option['secret_key'];
         } else {
