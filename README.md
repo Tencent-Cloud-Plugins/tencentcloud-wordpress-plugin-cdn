@@ -4,5 +4,4 @@
 
 
 致谢
-该插件参考了wordpress插件[wpcos](https://github.com/lezaiyun/wpcos)
-及[wordpress-qcloud-cos](https://github.com/sy-records/wordpress-qcloud-cos)的实现方法，特此对其主创团队进行致谢。
+该插件参考了wordpress插件[zhanzhangb-tcdn](https://de.wordpress.org/plugins/zhanzhangb-tcdn)的实现方法，特此对其主创团队进行致谢。
