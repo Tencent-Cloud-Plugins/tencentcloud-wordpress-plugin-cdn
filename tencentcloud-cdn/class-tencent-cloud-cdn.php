@@ -219,14 +219,10 @@ class TencentWordpressCDN
                 $req->fromJsonString($params);
                 $resp = (array)$client->PurgeUrlsCache($req);
                 if (isset($resp['TaskId']) && isset($resp['RequestId'])) {
-                    wp_send_json_success();
+                    return;
                 }
                 return;
             } catch (TencentCloudSDKException $e) {
-                $err = array(
-                    'ErrorCode' => $e->getErrorCode(),
-                    "Message" => $e->getMessage()
-                );
                 return;
             }
         }
@@ -239,14 +235,10 @@ class TencentWordpressCDN
                 $req->fromJsonString($params);
                 $resp = (array)$client->PurgeUrlsCache($req);
                 if (isset($resp['TaskId']) && isset($resp['RequestId'])) {
-                    wp_send_json_success();
+                    return;
                 }
                 return;
             } catch (TencentCloudSDKException $e) {
-                $err = array(
-                    'ErrorCode' => $e->getErrorCode(),
-                    "Message" => $e->getMessage()
-                );
                 return;
             }
         }
@@ -269,9 +261,6 @@ class TencentWordpressCDN
         try {
             $client = self::getCndClient($tcwpcdn_options);
             if (false === $client) {
-                $err = array(
-                    "Message" => 'create CdnClient failed'
-                );
                 return;
             }
 
@@ -287,10 +276,6 @@ class TencentWordpressCDN
             }
             return;
         } catch (TencentCloudSDKException $e) {
-            $err = array(
-                'ErrorCode' => $e->getErrorCode(),
-                "Message" => $e->getMessage()
-            );
             return;
         }
     }
@@ -310,9 +295,6 @@ class TencentWordpressCDN
         try {
             $client = self::getCndClient($tcwpcdn_options);
             if (false === $client) {
-                $err = array(
-                    "Message" => 'create CdnClient failed'
-                );
                 return;
             }
 
@@ -329,10 +311,6 @@ class TencentWordpressCDN
             }
 
         } catch (TencentCloudSDKException $e) {
-            $err = array(
-                'ErrorCode' => $e->getErrorCode(),
-                "Message" => $e->getMessage()
-            );
             return;
         }
     }
