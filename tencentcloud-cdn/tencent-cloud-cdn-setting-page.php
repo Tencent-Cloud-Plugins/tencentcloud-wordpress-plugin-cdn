@@ -343,9 +343,9 @@ $ajax_url = admin_url(TENCENT_WORDPRESS_CDN_ADMIN_AJAX);
                 <div>
                     <br>
                     <div class="setting_page_footer">
-                        <a href="https://openapp.qq.com/" target="_blank">文档中心</a> | <a
-                                href="https://github.com/Tencent-Cloud-Plugins/" target="_blank">GitHub</a> | <a
-                                href="https://support.qq.com/product/164613" target="_blank">反馈建议</a>
+                        <a href="https://openapp.qq.com/docs/Wordpress/cdn.html" target="_blank">文档中心</a> | <a
+                                href="https://github.com/Tencent-Cloud-Plugins/tencentcloud-wordpress-plugin-cdn" target="_blank">GitHub</a> | <a
+                                href="https://da.do/y0rp" target="_blank">反馈建议</a>
                     </div>
                 </div>
             </div>

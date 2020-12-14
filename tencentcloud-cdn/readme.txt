@@ -1,11 +1,11 @@
 === 腾讯云内容分发管理（CDN） ===
 Contributors: 腾讯云中小企业产品中心（SMB Product Center of Tencent Cloud）
-Tags: 腾讯云wordpress, CDN, 内容分发网络, 腾讯云
+Tags: 腾讯云wordpress, CDN, 内容分发网络, 腾讯云, 春雨计划， Tencent Cloud
 Donate link: https://cloud.tencent.com/
 Requires at least: 5.0
 Tested up to: 5.4.1
 Requires PHP: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: Apache 2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0.txt
 
@@ -50,3 +50,6 @@ License URI: http://www.apache.org/licenses/LICENSE-2.0.txt
 * 1、新增手动刷新所有URL的功能
 * 2、新增自定义URL刷新功能
 * 3、新增自动刷新日志功能
+
+= 1.0.2 =
+* 1、支持windows运行环境
