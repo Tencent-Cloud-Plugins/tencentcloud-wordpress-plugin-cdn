@@ -7,7 +7,7 @@
 | ---------- | ------------------------------------------------------------ |
 | 中文名称   | 腾讯云内容分发网络（CDN）插件                                    |
 | 英文名称   | tencentcloud-cdn                                      |
-| 最新版本   | 1.0.1 (2020.07.15)                                          |
+| 最新版本   | 1.0.2 (2020.12.11)                                       |
 | 适用平台   | [WordPress](https://wordpress.org/)                          |
 | 适用产品   | [腾讯云内容分发网络（CDN）](https://cloud.tencent.com/product/cdn)            |
 | GitHub项目 | [tencentcloud-wordpress-plugin-cdn](https://github.com/Tencent-Cloud-Plugins/tencentcloud-wordpress-plugin-cdn) |
@@ -72,11 +72,14 @@
 
 ## 7.版本迭代记录
 
-### 7.1.tencentcloud-wordpress-plugin-cdn v1.0.1
+### 2020.12.11 tencentcloud-wordpress-plugin-cdn v1.0.2
+- 支持在windows环境下运行
+
+### 2020.7.15 tencentcloud-wordpress-plugin-cdn v1.0.1
 - 新增CDN目录刷新和URL刷新功能。
 - 新增刷新日志查询功能。
 
-### 7.2.tencentcloud-wordpress-plugin-cdn v1.0.0
+### 2020.6.22 tencentcloud-wordpress-plugin-cdn v1.0.0
 - 发布或更新文章时，将自动刷新文章页、首页、分类列表页、标签列表页相关URL缓存。
 - 发表评论或评论被审批后，将自动刷新文章页CDN缓存。
 

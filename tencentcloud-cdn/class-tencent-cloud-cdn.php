@@ -295,6 +295,9 @@ class TencentWordpressCDN
         try {
             $client = self::getCndClient($tcwpcdn_options);
             if (false === $client) {
+                $err = array(
+                    "Message" => 'create CdnClient failed'
+                );
                 return;
             }
 
@@ -309,7 +312,6 @@ class TencentWordpressCDN
             if (!isset($resp['TaskId']) || !isset($resp['RequestId'])) {
                 return;
             }
-
         } catch (TencentCloudSDKException $e) {
             return;
         }
